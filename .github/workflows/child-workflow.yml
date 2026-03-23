@@ -1,0 +1,20 @@
+name: Image Security Scan 
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+  pull_request:
+    branches: [ "main", "master" ]
+  
+  workflow_dispatch:
+
+
+jobs:
+  Scan:
+    uses: rahg0/AppSec-CI/image-scan-ci-binary/.github/workflows/orca-cli-binary.yml@main
+    with:
+      project_key: slrk
+      dockerfile-details: './Dockerfile'
+      image_name: raghuesh/image-scan-ci-reusuable-workflow
+    secrets: inherit
